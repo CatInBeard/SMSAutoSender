@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name" translatable="false">SMS Auto Sender</string>
+    <string name="work_in">Work in: </string>
+    <string name="minutes">" minutes!"</string>
+    <string name="stop">stop</string>
+    <string name="start">start</string>
+    <string name="not_started">Not started</string>
+    <string name="wait">Wait while starting</string>
+    <string name="welcome">welcome</string>
+    <string name="sent">Sent</string>
+    <string name="not_sent">Not sent</string>
+    <string name="last_message">Last message</string>
+    <string name="last_message_dots">Last message:</string>
+    <string name="phone">phone</string>
+    <string name="message_text_placeholder">text</string>
+    <string name="status">status</string>
+    <string name="no_new_messages">No new messages!</string>
+    <string name="processing_sms">Processing new message!</string>
+    <string name="need_sms_permission">Need sms permission!</string>
+    <string name="not_delivered">Sms is not delivered!</string>
+    <string name="network_error">Error with internet connection!!!</string>
+    <string name="settings_button">Settings</string>
+    <string name="save_button">Save</string>
+    <string name="list_api_url_placeholder" translatable="false">List api url</string>
+    <string name="error_api_url_placeholder" translatable="false">Error api url</string>
+    <string name="list_api_url_edittext_placeholder" translatable="false">https://example.com/api/list</string>
+    <string name="error_api_url_edittext_placeholder" translatable="false">https://example.com/api/error?id=</string>
+</resources>

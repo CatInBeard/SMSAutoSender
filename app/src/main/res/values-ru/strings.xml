@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="work_in">"Запущено: "</string>
+    <string name="minutes">" минут"</string>
+    <string name="stop">стоп</string>
+    <string name="start">старт</string>
+    <string name="not_started">Не запущено</string>
+    <string name="wait">Ожидайте запуска приложения</string>
+    <string name="welcome">Добро пожаловть</string>
+    <string name="sent">Отправлено</string>
+    <string name="not_sent">Не отправлено</string>
+    <string name="last_message">Последнее сообщение</string>
+    <string name="last_message_dots">Последнее сообщение:</string>
+    <string name="phone">Номер телефона</string>
+    <string name="message_text_placeholder">Текст</string>
+    <string name="status">Статус</string>
+    <string name="no_new_messages">Нет новых сообщений!</string>
+    <string name="processing_sms">Обрабатывается новое сообщение!</string>
+    <string name="need_sms_permission">Нужно разрешение на отправку смс!</string>
+    <string name="not_delivered">Смс не отправлено!</string>
+    <string name="network_error">Нет соединения с сервером</string>
+    <string name="settings_button">Настройки</string>
+    <string name="save_button">Сохранить</string>
+</resources>
