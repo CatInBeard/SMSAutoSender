@@ -161,8 +161,8 @@ public class MainActivity extends AppCompatActivity {
                 if (!isRun) {
                     isRun = true;
                     statusTextView.setText(getResources().getString(R.string.wait));
-                    prepareToProceedMessages();
                     startTime = System.currentTimeMillis();
+                    prepareToProceedMessages();
                     primaryButton.setText(getResources().getString(R.string.stop));
                 } else {
                     statusTextView.setText(getResources().getString(R.string.not_started));
@@ -226,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void prepareToProceedMessages() {
-        long Minutes = 0;
+        long Minutes = ((System.currentTimeMillis() - startTime)) / 1000 / 60;
         String workTimeText = getResources().getString(R.string.work_in) + " " + Minutes + " "
                 + getResources().getString(R.string.minutes);
         statusTextView.setText(workTimeText);
