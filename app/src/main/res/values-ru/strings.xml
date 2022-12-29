@@ -21,4 +21,5 @@
     <string name="network_error">Нет соединения с сервером</string>
     <string name="settings_button">Настройки</string>
     <string name="save_button">Сохранить</string>
+    <string name="refresh_time_placeholder">Время обновления (с)</string>
 </resources>

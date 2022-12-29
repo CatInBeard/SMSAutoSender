@@ -23,6 +23,7 @@
     <string name="save_button">Save</string>
     <string name="list_api_url_placeholder" translatable="false">List api url</string>
     <string name="error_api_url_placeholder" translatable="false">Error api url</string>
+    <string name="refresh_time_placeholder">Refresh time (s)</string>
     <string name="list_api_url_edittext_placeholder" translatable="false">https://example.com/api/list</string>
     <string name="error_api_url_edittext_placeholder" translatable="false">https://example.com/api/error?id=</string>
 </resources>

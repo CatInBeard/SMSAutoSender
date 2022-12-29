@@ -219,7 +219,8 @@ public class MainActivity extends AppCompatActivity {
                     prepareToProceedMessages();
                 }
 
-                mHandler.sendEmptyMessageDelayed(0, 60000);
+                int refresh_time = preferences.getInt("REFRESH_TIME",60);
+                mHandler.sendEmptyMessageDelayed(0, refresh_time*1000);
             }
         };
         mHandler.sendEmptyMessage(0);
@@ -227,9 +228,9 @@ public class MainActivity extends AppCompatActivity {
 
     protected void prepareToProceedMessages() {
         long Minutes = ((System.currentTimeMillis() - startTime)) / 1000 / 60;
-        String workTimeText = getResources().getString(R.string.work_in) + " " + Minutes + " "
-                + getResources().getString(R.string.minutes);
-        statusTextView.setText(workTimeText);
+        String workingTimeText = getResources().getString(R.string.work_in) + Minutes +
+                getResources().getString(R.string.minutes);
+        statusTextView.setText(workingTimeText);
         sendNextMessage();
     }
 

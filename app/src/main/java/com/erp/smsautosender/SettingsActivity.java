@@ -13,6 +13,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected SharedPreferences preferences;
     protected EditText listApiEditText;
     protected EditText errorApiEditText;
+    protected EditText refreshTimeEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
         preferences = getSharedPreferences("APIPreferences", MODE_PRIVATE);
         listApiEditText = findViewById(R.id.editTextListApi);
         errorApiEditText = findViewById(R.id.editTextErrorApi);
+        refreshTimeEditText = findViewById(R.id.editTextNumberDecimalRefreshTime);
 
     }
     protected void setListeners(){
@@ -38,10 +40,13 @@ public class SettingsActivity extends AppCompatActivity {
 
                 String api_list_val = listApiEditText.getText().toString();
                 String api_error_val = errorApiEditText.getText().toString();
+                int refresh_time_val = Integer.parseInt(refreshTimeEditText.getText().toString());
 
                 prefEditor.putString("API_LIST", api_list_val);
                 prefEditor.apply();
                 prefEditor.putString("API_ERROR", api_error_val);
+                prefEditor.apply();
+                prefEditor.putInt("REFRESH_TIME", refresh_time_val);
                 prefEditor.apply();
 
                 startActivity(new Intent(SettingsActivity.this, MainActivity.class));
@@ -51,10 +56,10 @@ public class SettingsActivity extends AppCompatActivity {
     protected void drawComponents(){
         String listApi = preferences.getString("API_LIST", getResources().getString(R.string.list_api_url_edittext_placeholder));
         String errorApi = preferences.getString("API_ERROR",getResources().getString(R.string.error_api_url_edittext_placeholder));
-
+        int refresh_time = preferences.getInt("REFRESH_TIME",60);
         listApiEditText.setText(listApi);
         errorApiEditText.setText(errorApi);
-
+        refreshTimeEditText.setText(Integer.toString(refresh_time));
 
     }
 }
