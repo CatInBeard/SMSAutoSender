@@ -30,6 +30,7 @@ import java.lang.reflect.Array;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
@@ -130,7 +131,10 @@ public class MainActivity extends AppCompatActivity {
 
     protected boolean sendSms(String phone, String text) {
         try {
-            sms.sendTextMessage(phone, null, text, pi, null);
+            ArrayList<String> parts = sms.divideMessage(text);
+            int numParts = parts.size();
+            ArrayList<PendingIntent> pendingIntents = new ArrayList<PendingIntent>();
+            sms.sendMultipartTextMessage(phone, null,parts,null,null);
         } catch (Exception e) {
             return false;
         }
@@ -230,6 +234,7 @@ public class MainActivity extends AppCompatActivity {
         long Minutes = ((System.currentTimeMillis() - startTime)) / 1000 / 60;
         String workingTimeText = getResources().getString(R.string.work_in) + Minutes +
                 getResources().getString(R.string.minutes);
+        //displayShortToast("Should update"); // DEBUG
         statusTextView.setText(workingTimeText);
         sendNextMessage();
     }
