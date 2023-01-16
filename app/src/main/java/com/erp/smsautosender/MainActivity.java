@@ -7,7 +7,10 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.PendingIntent;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -34,7 +37,8 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-
+    final private int MY_PERMISSIONS_REQUEST_SMS_RECEIVE = 10;
+    public static Context contextOfApplication;
     private static Handler mHandler;
     private static boolean isRun = false;
     private static String LastMessageText;
@@ -46,16 +50,16 @@ public class MainActivity extends AppCompatActivity {
     private TextView lastMessagetextView;
     private Button primaryButton;
     private Button settingsButton;
-    private SharedPreferences preferences;
+    private static SharedPreferences preferences;
     private final static int connectionTimeout = 5000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        contextOfApplication = getApplicationContext();
         setInit();
     }
-
     protected void sendNextMessage() {
         String inputLine = "";
         String listApiUrl = preferences.getString("API_LIST", getResources().getString(R.string.list_api_url_edittext_placeholder));
@@ -64,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             e.printStackTrace();
             displayShortToast(getResources().getString(R.string.network_error));
+            System.out.println(getResources().getString(R.string.network_error) + listApiUrl);
         }
         if (inputLine != "") {
             displayShortToast(getResources().getString(R.string.processing_sms));
@@ -234,8 +239,8 @@ public class MainActivity extends AppCompatActivity {
         long Minutes = ((System.currentTimeMillis() - startTime)) / 1000 / 60;
         String workingTimeText = getResources().getString(R.string.work_in) + Minutes +
                 getResources().getString(R.string.minutes);
-        //displayShortToast("Should update"); // DEBUG
         statusTextView.setText(workingTimeText);
+        statusTextView.postInvalidate();
         sendNextMessage();
     }
 
@@ -254,8 +259,11 @@ public class MainActivity extends AppCompatActivity {
         switch (requestCode) {
             case 100: {
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                } else {
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.RECEIVE_SMS},
+                            MY_PERMISSIONS_REQUEST_SMS_RECEIVE);
+                }
+                else {
                     statusTextView.setText(getResources().getString(R.string.need_sms_permission));
                     primaryButton.setEnabled(false);
                 }
@@ -273,5 +281,9 @@ public class MainActivity extends AppCompatActivity {
         Toast toast = Toast.makeText(getApplicationContext(),
                 text, duration);
         toast.show();
+    }
+
+    public static Context getContextOfApplication(){
+        return contextOfApplication;
     }
 }
