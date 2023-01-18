@@ -21,12 +21,25 @@ public class SMSBroadcastReceiver extends BroadcastReceiver {
                 for (int i = 0; i < pdus.length; i++) {
                     messages[i] = SmsMessage.createFromPdu((byte[])pdus[i]);
                 }
-                if (messages.length > -1) {
-                    SmsApi smsApi = new SmsApi();
-                    String messageText = messages[0].getMessageBody();
-                    String messagePhone = messages[0].getOriginatingAddress();
-                    Toast.makeText(context, "Recieved message from " + messagePhone + ": " +messageText , Toast.LENGTH_LONG).show();
-                    smsApi.APIReceiveSMS(messagePhone,messageText);
+
+                SmsMessage sms = messages[0];
+                String body;
+                try {
+                    if (messages.length == 1 || sms.isReplace()) {
+                        body = sms.getDisplayMessageBody();
+                    } else {
+                        StringBuilder bodyText = new StringBuilder();
+                        for (int i = 0; i < messages.length; i++) {
+                            bodyText.append(messages[i].getMessageBody());
+                        }
+                        SmsApi smsApi = new SmsApi();
+                        String messageText = bodyText.toString();
+                        String messagePhone = messages[0].getOriginatingAddress();
+                        Toast.makeText(context, "Recieved message from " + messagePhone + ": " +messageText , Toast.LENGTH_LONG).show();
+                        smsApi.APIReceiveSMS(messagePhone,messageText);
+                    }
+                } catch (Exception e) {
+
                 }
             }
         }
