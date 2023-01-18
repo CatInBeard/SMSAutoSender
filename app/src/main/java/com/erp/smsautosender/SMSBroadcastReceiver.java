@@ -23,21 +23,22 @@ public class SMSBroadcastReceiver extends BroadcastReceiver {
                 }
 
                 SmsMessage sms = messages[0];
-                String body;
+                String messageText;
                 try {
                     if (messages.length == 1 || sms.isReplace()) {
-                        body = sms.getDisplayMessageBody();
+                        messageText = sms.getDisplayMessageBody();
                     } else {
                         StringBuilder bodyText = new StringBuilder();
                         for (int i = 0; i < messages.length; i++) {
                             bodyText.append(messages[i].getMessageBody());
                         }
-                        SmsApi smsApi = new SmsApi();
-                        String messageText = bodyText.toString();
-                        String messagePhone = messages[0].getOriginatingAddress();
-                        Toast.makeText(context, "Recieved message from " + messagePhone + ": " +messageText , Toast.LENGTH_LONG).show();
-                        smsApi.APIReceiveSMS(messagePhone,messageText);
+                        messageText = bodyText.toString();
                     }
+
+                    SmsApi smsApi = new SmsApi();
+                    String messagePhone = messages[0].getOriginatingAddress();
+                    Toast.makeText(context, "Recieved message from " + messagePhone + ": " +messageText , Toast.LENGTH_LONG).show();
+                    smsApi.APIReceiveSMS(messagePhone,messageText);
                 } catch (Exception e) {
 
                 }
