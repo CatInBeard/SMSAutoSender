@@ -89,11 +89,15 @@ public class MainActivity extends AppCompatActivity {
         BufferedReader reader = new BufferedReader(new InputStreamReader(in));
         StringBuilder html = new StringBuilder();
         for (String line; (line = reader.readLine()) != null; ) {
-            html.append(line);
+            html.append(line + "\n");
         }
         in.close();
 
-        return html.toString();
+        String outputString = html.toString();
+        if(outputString.length()>1) {
+            return outputString.substring(0, (outputString.length() - 1));
+        }
+        return "";
     }
 
     protected void proceed_sms_request(String inputLine) {
