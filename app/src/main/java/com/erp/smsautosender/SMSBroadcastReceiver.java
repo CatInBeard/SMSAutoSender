@@ -9,6 +9,7 @@ import android.telephony.SmsMessage;
 import android.widget.Toast;
 
 public class SMSBroadcastReceiver extends BroadcastReceiver {
+    private Context applicationContext;
     public static final String ACTION ="android.provider.Telephony.SMS_RECEIVED";
     private static final String SMS_SENDER="123456789";
     @Override
@@ -37,7 +38,8 @@ public class SMSBroadcastReceiver extends BroadcastReceiver {
 
                     SmsApi smsApi = new SmsApi();
                     String messagePhone = messages[0].getOriginatingAddress();
-                    Toast.makeText(context, "Recieved message from " + messagePhone + ": " +messageText , Toast.LENGTH_LONG).show();
+                    applicationContext = MainActivity.getContextOfApplication();
+                    Toast.makeText(context, applicationContext.getResources().getString(R.string.new_call_from) + ": " + messagePhone + ": " +messageText , Toast.LENGTH_LONG).show();
                     smsApi.APIReceiveSMS(messagePhone,messageText);
                 } catch (Exception e) {
 

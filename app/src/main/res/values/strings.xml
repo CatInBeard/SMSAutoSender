@@ -16,6 +16,8 @@
     <string name="status">status</string>
     <string name="no_new_messages">No new messages!</string>
     <string name="processing_sms">Processing new message!</string>
+    <string name="new_call_from">New call from</string>
+    <string name="new_sms_from">New SMS from</string>
     <string name="need_sms_permission">Need sms permission!</string>
     <string name="not_delivered">Sms is not delivered!</string>
     <string name="network_error">Error with internet connection!!!</string>
@@ -24,7 +26,9 @@
     <string name="list_api_url_placeholder" translatable="false">List api url</string>
     <string name="error_api_url_placeholder" translatable="false">Error api url</string>
     <string name="receive_api_url_placeholder" translatable="false">Receive api url</string>
+    <string name="incoming_call_api_url_placeholder" translatable="false">Incoming call api url</string>
     <string name="refresh_time_placeholder">Refresh time (s)</string>
+    <string name="incoming_call_api_url_edittext_placeholder" translatable="false">https://example.com/api/incomig_call</string>
     <string name="list_api_url_edittext_placeholder" translatable="false">https://example.com/api/list</string>
     <string name="receive_api_url_edittext_placeholder" translatable="false">https://example.com/api/receive</string>
     <string name="error_api_url_edittext_placeholder" translatable="false">https://example.com/api/error?id=</string>

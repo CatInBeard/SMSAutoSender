@@ -255,6 +255,25 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS},100);
 
         }
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_CALL_LOG)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CALL_LOG},200);
+
+        }
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.READ_PHONE_STATE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE},300);
+
+        }
+
+        if (ContextCompat.checkSelfPermission(this,
+                Manifest.permission.CALL_PHONE)
+                != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE},400);
+
+        }
     }
 
     @Override
@@ -262,6 +281,11 @@ public class MainActivity extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         switch (requestCode) {
             case 100: {
+                if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.READ_CALL_LOG)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_CALL_LOG},200);
+                }
                 if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     ActivityCompat.requestPermissions(this,
                             new String[]{Manifest.permission.RECEIVE_SMS},
@@ -271,8 +295,23 @@ public class MainActivity extends AppCompatActivity {
                     statusTextView.setText(getResources().getString(R.string.need_sms_permission));
                     primaryButton.setEnabled(false);
                 }
-
                 return;
+            }
+            case 200:{
+                if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.READ_PHONE_STATE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE},300);
+
+                }
+                return;
+            }
+            case 300:{
+                if (ContextCompat.checkSelfPermission(this,
+                        Manifest.permission.CALL_PHONE)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CALL_PHONE},400);
+                }
             }
         }
     }

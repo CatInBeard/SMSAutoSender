@@ -29,6 +29,18 @@ public class SmsApi {
         }
     }
 
+    public void APIReceiveIncomingCall(String phone){
+        applicationContext = MainActivity.getContextOfApplication();
+        SharedPreferences preferences = applicationContext.getSharedPreferences("APIPreferences", Context.MODE_PRIVATE);
+        String receiveApiUrl = preferences.getString("API_INCOMING_CALL", applicationContext.getResources().getString(R.string.incoming_call_api_url_edittext_placeholder)) + "?phone=" + phone;
+        try {
+            MainActivity.getPageSource(receiveApiUrl);
+        } catch (Exception e) {
+            e.printStackTrace();
+            displayShortToast(applicationContext.getResources().getString(R.string.network_error));
+        }
+    }
+
     protected void displayShortToast(String text) {
         displayToast(text, Toast.LENGTH_SHORT);
     }

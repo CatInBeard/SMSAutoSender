@@ -22,4 +22,6 @@
     <string name="settings_button">Настройки</string>
     <string name="save_button">Сохранить</string>
     <string name="refresh_time_placeholder">Время обновления (с)</string>
+    <string name="new_sms_from">"Получено новое СМС "</string>
+    <string name="new_call_from">Получен  новый звонок от</string>
 </resources>
