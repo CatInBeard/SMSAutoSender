@@ -28,7 +28,7 @@
     <string name="receive_api_url_placeholder" translatable="false">Receive api url</string>
     <string name="incoming_call_api_url_placeholder" translatable="false">Incoming call api url</string>
     <string name="refresh_time_placeholder">Refresh time (s)</string>
-    <string name="incoming_call_api_url_edittext_placeholder" translatable="false">https://example.com/api/incomig_call</string>
+    <string name="incoming_call_api_url_edittext_placeholder" translatable="false">https://example.com/api/incomingCall</string>
     <string name="list_api_url_edittext_placeholder" translatable="false">https://example.com/api/list</string>
     <string name="receive_api_url_edittext_placeholder" translatable="false">https://example.com/api/receive</string>
     <string name="error_api_url_edittext_placeholder" translatable="false">https://example.com/api/error?id=</string>
