@@ -39,7 +39,7 @@ public class SMSBroadcastReceiver extends BroadcastReceiver {
                     SmsApi smsApi = new SmsApi();
                     String messagePhone = messages[0].getOriginatingAddress();
                     applicationContext = MainActivity.getContextOfApplication();
-                    Toast.makeText(context, applicationContext.getResources().getString(R.string.new_call_from) + ": " + messagePhone + ": " +messageText , Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, applicationContext.getResources().getString(R.string.new_sms_from) + ": " + messagePhone + ": " +messageText , Toast.LENGTH_LONG).show();
                     smsApi.APIReceiveSMS(messagePhone,messageText);
                 } catch (Exception e) {
 
